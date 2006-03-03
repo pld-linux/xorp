@@ -5,7 +5,7 @@ Version:	1.2
 Release:	0.%{_rc}.0.2
 License:	BSD-like
 Group:		Networking/Admin
-Source0:	http://www.xorp.org/releases/1.2-RC/%{name}-%{version}-%{_rc}.tar.gz
+Source0:	http://www.xorp.org/releases/%{version}-%{_rc}/%{name}-%{version}-%{_rc}.tar.gz
 # Source0-md5:	ee5cc37d88304d2716245bf0279e6b04
 URL:		http://www.xorp.org/
 BuildRequires:	autoconf
