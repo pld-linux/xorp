@@ -1,5 +1,6 @@
 # TODO:
 # - %files section need to be... made :)
+# (FHS violations to kill - many dirs under /usr)
 #  /bin/xorp_profiler
 #  /bin/xorp_rtrmgr
 #  /bin/xorpsh
@@ -105,6 +106,7 @@
 # 
 %define		_rc	RC
 Summary:	eXtensible Open Router Platform
+Summary(pl):	eXtensible Open Router Platform - rozszerzalna otwarta platforma dla routera
 Name:		xorp
 Version:	1.2
 Release:	0.%{_rc}.0.3
@@ -132,6 +134,18 @@ system. It is reliant on the forwarding of the underlying host
 operating system. We would like to support forwarding in custom
 hardware and software architectures in future. An example being the
 Click modular router.
+
+%description -l pl
+XORP udostêpnia zbiór implementacji protoko³ów routingu, rozszerzalne
+API programistyczne oraz narzêdzia konfiguracyjne. Obs³ugiwane
+protoko³y to BGP, RIP, PIM-SM i IGMP/MLD. Obs³ugiwane s± zarówno IPv4
+jak i IPv6. Lista protoko³ów i mo¿liwo¶ci prawdopodobnie bêdzie siê
+powiêkszaæ w miarê przybywania osób rozwijaj±cych projekt.
+
+Aktualnie XORP nie implementuje w³asnego systemu forwardowania. Polega
+na forwardingu z systemu operacyjnego. Autorzy chc± w przysz³o¶ci
+obs³ugiwaæ forwarding we w³asnych architekturach sprzêtowych i
+programowych. Przyk³adem mo¿e byæ modularny router Click.
 
 %prep
 %setup -q -n %{name}-%{version}-%{_rc}
