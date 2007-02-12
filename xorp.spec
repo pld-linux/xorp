@@ -106,7 +106,7 @@
 # 
 %define		_rc	RC
 Summary:	eXtensible Open Router Platform
-Summary(pl.UTF-8):   eXtensible Open Router Platform - rozszerzalna otwarta platforma dla routera
+Summary(pl.UTF-8):	eXtensible Open Router Platform - rozszerzalna otwarta platforma dla routera
 Name:		xorp
 Version:	1.2
 Release:	0.%{_rc}.0.3
