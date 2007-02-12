@@ -106,7 +106,7 @@
 # 
 %define		_rc	RC
 Summary:	eXtensible Open Router Platform
-Summary(pl):	eXtensible Open Router Platform - rozszerzalna otwarta platforma dla routera
+Summary(pl.UTF-8):   eXtensible Open Router Platform - rozszerzalna otwarta platforma dla routera
 Name:		xorp
 Version:	1.2
 Release:	0.%{_rc}.0.3
@@ -135,17 +135,17 @@ operating system. We would like to support forwarding in custom
 hardware and software architectures in future. An example being the
 Click modular router.
 
-%description -l pl
-XORP udostêpnia zbiór implementacji protoko³ów routingu, rozszerzalne
-API programistyczne oraz narzêdzia konfiguracyjne. Obs³ugiwane
-protoko³y to BGP, RIP, PIM-SM i IGMP/MLD. Obs³ugiwane s± zarówno IPv4
-jak i IPv6. Lista protoko³ów i mo¿liwo¶ci prawdopodobnie bêdzie siê
-powiêkszaæ w miarê przybywania osób rozwijaj±cych projekt.
+%description -l pl.UTF-8
+XORP udostÄ™pnia zbiÃ³r implementacji protokoÅ‚Ã³w routingu, rozszerzalne
+API programistyczne oraz narzÄ™dzia konfiguracyjne. ObsÅ‚ugiwane
+protokoÅ‚y to BGP, RIP, PIM-SM i IGMP/MLD. ObsÅ‚ugiwane sÄ… zarÃ³wno IPv4
+jak i IPv6. Lista protokoÅ‚Ã³w i moÅ¼liwoÅ›ci prawdopodobnie bÄ™dzie siÄ™
+powiÄ™kszaÄ‡ w miarÄ™ przybywania osÃ³b rozwijajÄ…cych projekt.
 
-Aktualnie XORP nie implementuje w³asnego systemu forwardowania. Polega
-na forwardingu z systemu operacyjnego. Autorzy chc± w przysz³o¶ci
-obs³ugiwaæ forwarding we w³asnych architekturach sprzêtowych i
-programowych. Przyk³adem mo¿e byæ modularny router Click.
+Aktualnie XORP nie implementuje wÅ‚asnego systemu forwardowania. Polega
+na forwardingu z systemu operacyjnego. Autorzy chcÄ… w przyszÅ‚oÅ›ci
+obsÅ‚ugiwaÄ‡ forwarding we wÅ‚asnych architekturach sprzÄ™towych i
+programowych. PrzykÅ‚adem moÅ¼e byÄ‡ modularny router Click.
 
 %prep
 %setup -q -n %{name}-%{version}-%{_rc}
