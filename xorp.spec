@@ -28,7 +28,6 @@ BuildRequires:	openssl-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	net-snmp-devel
 %{?with_test:BuildRequires:	python}
-BuildRequires:	python
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
