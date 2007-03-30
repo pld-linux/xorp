@@ -1,125 +1,34 @@
 # TODO:
-# - %files section need to be... made :)
-# (FHS violations to kill - many dirs under /usr)
-#  /bin/xorp_profiler
-#  /bin/xorp_rtrmgr
-#  /bin/xorpsh
-#  /usr/bgp/tools/xorpsh_print_peers
-#  /usr/bgp/tools/xorpsh_print_routes
-#  /usr/bgp/xorp_bgp
-#  /usr/bin/call_xrl
-#  /usr/cli/tools/send_cli_processor_xrl
-#  /usr/etc/templates/bgp.cmds
-#  /usr/etc/templates/bgp.tp
-#  /usr/etc/templates/fea.cmds
-#  /usr/etc/templates/fea.tp
-#  /usr/etc/templates/fib2mrib.tp
-#  /usr/etc/templates/host.cmds
-#  /usr/etc/templates/igmp.cmds
-#  /usr/etc/templates/igmp.tp
-#  /usr/etc/templates/interfaces.tp
-#  /usr/etc/templates/mfea.cmds
-#  /usr/etc/templates/mfea4.tp
-#  /usr/etc/templates/mfea6.cmds
-#  /usr/etc/templates/mfea6.tp
-#  /usr/etc/templates/misc.cmds
-#  /usr/etc/templates/mld.cmds
-#  /usr/etc/templates/mld.tp
-#  /usr/etc/templates/ospfv2.cmds
-#  /usr/etc/templates/ospfv2.tp
-#  /usr/etc/templates/pim.cmds
-#  /usr/etc/templates/pim6.cmds
-#  /usr/etc/templates/pimsm4.tp
-#  /usr/etc/templates/pimsm6.tp
-#  /usr/etc/templates/plumbing.tp
-#  /usr/etc/templates/policy.tp
-#  /usr/etc/templates/protocols.tp
-#  /usr/etc/templates/rib.cmds
-#  /usr/etc/templates/rib.tp
-#  /usr/etc/templates/rip.cmds
-#  /usr/etc/templates/rip.tp
-#  /usr/etc/templates/ripng.tp
-#  /usr/etc/templates/rtrmgr.tp
-#  /usr/etc/templates/snmp.tp
-#  /usr/etc/templates/static_routes.tp
-#  /usr/etc/templates/xorpsh.cmds
-#  /usr/fea/tools/show_interfaces
-#  /usr/fea/xorp_fea
-#  /usr/fea/xorp_fea_click_config_generator
-#  /usr/fea/xorp_fea_dummy
-#  /usr/fib2mrib/xorp_fib2mrib
-#  /usr/libxipc/xorp_finder
-#  /usr/mld6igmp/xorp_igmp
-#  /usr/mld6igmp/xorp_mld
-#  /usr/ospf/tools/print_lsas
-#  /usr/ospf/tools/print_neighbours
-#  /usr/ospf/xorp_ospfv2
-#  /usr/ospf/xorp_ospfv3
-#  /usr/pim/xorp_pimsm4
-#  /usr/pim/xorp_pimsm6
-#  /usr/policy/xorp_policy
-#  /usr/rib/tools/show_routes
-#  /usr/rib/xorp_rib
-#  /usr/rip/tools/show_peer_stats
-#  /usr/rip/tools/show_stats
-#  /usr/rip/xorp_rip
-#  /usr/rip/xorp_ripng
-#  /usr/static_routes/xorp_static_routes
-#  /usr/xrl/targets/bgp.xrls
-#  /usr/xrl/targets/bgp4_mib.xrls
-#  /usr/xrl/targets/cli.xrls
-#  /usr/xrl/targets/coord.xrls
-#  /usr/xrl/targets/demo_fea_ifmgr_client.xrls
-#  /usr/xrl/targets/fea.xrls
-#  /usr/xrl/targets/fea_ifmgr_mirror.xrls
-#  /usr/xrl/targets/fib2mrib.xrls
-#  /usr/xrl/targets/finder.xrls
-#  /usr/xrl/targets/finder_client.xrls
-#  /usr/xrl/targets/mfea.xrls
-#  /usr/xrl/targets/mld6igmp.xrls
-#  /usr/xrl/targets/ospf.xrls
-#  /usr/xrl/targets/ospfv2.xrls
-#  /usr/xrl/targets/ospfv3.xrls
-#  /usr/xrl/targets/packet_acl.xrls
-#  /usr/xrl/targets/pim.xrls
-#  /usr/xrl/targets/policy.xrls
-#  /usr/xrl/targets/profiler.xrls
-#  /usr/xrl/targets/rib.xrls
-#  /usr/xrl/targets/ribclient.xrls
-#  /usr/xrl/targets/rip.xrls
-#  /usr/xrl/targets/ripng.xrls
-#  /usr/xrl/targets/rtrmgr.xrls
-#  /usr/xrl/targets/show_routes.xrls
-#  /usr/xrl/targets/socket_server.xrls
-#  /usr/xrl/targets/static_routes.xrls
-#  /usr/xrl/targets/test.xrls
-#  /usr/xrl/targets/test_fea_ifmgr_mirror.xrls
-#  /usr/xrl/targets/test_finder_events.xrls
-#  /usr/xrl/targets/test_peer.xrls
-#  /usr/xrl/targets/test_socket4.xrls
-#  /usr/xrl/targets/test_socket6.xrls
-#  /usr/xrl/targets/test_xrls.xrls
-#  /usr/xrl/targets/xorp_if_mib.xrls
-#  /usr/xrl/targets/xorpsh.xrls
-# 
+# - fix putting config templates in datadir (should be /etc/xorp/templates) 
 # - separate packages: xorpsh, maybe some more
+# - if someone know how to run bgp tests without root priviledges 
+#   (probably other too)
 # 
-%define		_rc	RC
+# Conditional build:
+%bcond_with	tests	# build without performing tests
+#
 Summary:	eXtensible Open Router Platform
 Summary(pl.UTF-8):	eXtensible Open Router Platform - rozszerzalna otwarta platforma dla routera
 Name:		xorp
-Version:	1.2
-Release:	0.%{_rc}.0.3
+Version:	1.4
+Release:	0.1
 License:	BSD-like
 Group:		Networking/Admin
-Source0:	http://www.xorp.org/releases/%{version}-%{_rc}/%{name}-%{version}-%{_rc}.tar.gz
-# Source0-md5:	ee5cc37d88304d2716245bf0279e6b04
+Source0:	http://www.xorp.org/releases/%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	2eeacffc96d9551fdbf6786fcd033e76
+Patch0:		%{name}-curses.patch
+Patch1:		%{name}-tests.patch
+Patch2:		%{name}-configure.patch
 URL:		http://www.xorp.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
 BuildRequires:	openssl-devel
+BuildRequires:	ncurses-devel
+BuildRequires:	net-snmp-devel
+%{?with_test:BuildRequires:	python}
+BuildRequires:	python
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -148,22 +57,29 @@ obsługiwać forwarding we własnych architekturach sprzętowych i
 programowych. Przykładem może być modularny router Click.
 
 %prep
-%setup -q -n %{name}-%{version}-%{_rc}
+%setup -q -n %{name}-%{version}
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
 %{__libtoolize}
 %{__aclocal}
-%{__automake}
 %{__autoconf}
+%{__automake}
 %configure
 
 %{__make}
+
+%if %{with tests}
+%{__make} check
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	 DESTDIR=$RPM_BUILD_ROOT
+	 DESTDIR=$RPM_BUILD_ROOT datadir=%{_datadir}/xorp bindir=%{_bindir} sbindir=%{_sbindir} sysconfdir=/etc/xorp docdir=%{_docdir}/xorp-1.4
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -171,26 +87,52 @@ rm -rf $RPM_BUILD_ROOT
 %post
 umask 022
 if [ ! -f %{_sysconfdir}/shells ]; then
-	echo "/bin/xorpsh" > %{_sysconfdir}/shells
+	echo "/usr/bin/xorpsh" > %{_sysconfdir}/shells
 else
-	if ! grep -q '^/bin/xorpsh$' %{_sysconfdir}/shells; then
-		echo "/bin/xorpsh" >> %{_sysconfdir}/shells
+	if ! grep -q '^/usr/bin/xorpsh$' %{_sysconfdir}/shells; then
+		echo "/usr/bin/xorpsh" >> %{_sysconfdir}/shells
 	fi
 fi
 
 %preun
 umask 022
 if [ "$1" = "0" ]; then
-	grep -v /bin/xorpsh /etc/shells > /etc/shells.new
+	grep -v /usr/bin/xorpsh /etc/shells > /etc/shells.new
 	mv -f /etc/shells.new /etc/shells
 fi
 
 %files
 %defattr(644,root,root,755)
-#%doc AUTHORS ChangeLog README CHROOT SECURITY mkchroot.sh
+%doc ERRATA README RELEASE_NOTES
 #%attr(644,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/rssh.conf
-%attr(755,root,root) /bin/xorp_profiler
-%attr(755,root,root) /bin/xorp_rtrmgr
-%attr(755,root,root) /bin/xorpsh
-#%attr(4755,root,root) %{_libdir}/rssh_chroot_helper
-#%{_mandir}/man?/*
+%attr(755,root,root) %{_bindir}/print_lsas
+%attr(755,root,root) %{_bindir}/print_neighbours
+%attr(755,root,root) %{_bindir}/send_cli_processor_xrl
+%attr(755,root,root) %{_bindir}/show_interfaces
+%attr(755,root,root) %{_bindir}/show_peer_stats
+%attr(755,root,root) %{_bindir}/show_routes
+%attr(755,root,root) %{_bindir}/show_stats
+%attr(755,root,root) %{_bindir}/xorp_profiler
+%attr(755,root,root) %{_bindir}/xorp_rtrmgr
+%attr(755,root,root) %{_bindir}/xorp_bgp
+%attr(755,root,root) %{_bindir}/xorp_fea
+%attr(755,root,root) %{_bindir}/xorp_fea_click_config_generator
+%attr(755,root,root) %{_bindir}/xorp_fea_dummy
+%attr(755,root,root) %{_bindir}/xorp_fib2mrib
+%attr(755,root,root) %{_bindir}/xorp_finder
+%attr(755,root,root) %{_bindir}/xorp_igmp
+%attr(755,root,root) %{_bindir}/xorp_mld
+%attr(755,root,root) %{_bindir}/xorp_ospfv2
+%attr(755,root,root) %{_bindir}/xorp_ospfv3
+%attr(755,root,root) %{_bindir}/xorp_pimsm4
+%attr(755,root,root) %{_bindir}/xorp_pimsm6
+%attr(755,root,root) %{_bindir}/xorp_policy
+%attr(755,root,root) %{_bindir}/xorp_rib
+%attr(755,root,root) %{_bindir}/xorp_rip
+%attr(755,root,root) %{_bindir}/xorp_ripng
+%attr(755,root,root) %{_bindir}/xorp_static_routes
+%attr(755,root,root) %{_bindir}/xorpsh
+%attr(755,root,root) %{_bindir}/xorpsh_print_peers
+%attr(755,root,root) %{_bindir}/xorpsh_print_routes
+%attr(755,root,root) %{_sbindir}/call_xrl
+%{_datadir}/xorp
