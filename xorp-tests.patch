@@ -1,0 +1,11 @@
+--- xorp-1.4/libxorp/test_run_command.cc	2007-02-16 22:46:25.000000000 +0000
++++ xorp-1.4/libxorp/test_run_command.cc	2007-03-26 17:39:01.000000000 +0000
+@@ -35,7 +35,7 @@
+ #define AWK_VIA_SHELL_PATH	"/bin/gawk"
+ #else
+ #define SLEEP_PATH		"/bin/sleep"
+-#define AWK_PATH		"/usr/bin/awk"
++#define AWK_PATH		"/bin/awk"
+ #define AWK_VIA_SHELL_PATH	AWK_PATH
+ #endif
+ 
