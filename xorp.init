@@ -1,0 +1,110 @@
+#!/bin/sh
+#
+# xorp		Start/Stop the XORP routing daemon.
+#
+# chkconfig:	345 12 88
+# description:	XORP is the eXtensible Open Router Platform
+#
+# processname:	xorp_rtrmgr
+# config:	/etc/xorp/xorp.conf
+# pidfile:	/var/run/xorp.pid
+
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+BOOT_CONF="/etc/xorp/xorp.conf"
+LOGFILE="/var/log/xorp.log"
+OPTIONS=""
+WAIT_TO_STOP=100
+
+# Get service config
+[ -f /etc/sysconfig/xorp ] && . /etc/sysconfig/xorp
+
+start() {
+	# Check if the service is already running?
+	if [ -f /var/lock/subsys/xorp ]; then
+		msg_already_running "XORP"
+		return
+	fi
+
+	msg_starting "XORP"
+	daemon xorp_rtrmgr -d -P /var/run/xorp.pid -b $BOOT_CONF -l $LOGFILE $OPTIONS
+	RETVAL=$?
+	[ $RETVAL -eq 0 ] && touch /var/lock/subsys/xorp
+}
+
+stop() {
+	if [ ! -f /var/lock/subsys/xorp ]; then
+		msg_not_running "XORP"
+		return
+	fi
+
+	msg_stopping "XORP"
+	busy
+	pid=$(pidofproc xorp_rtrmgr /var/run/xorp.pid)
+	if [ -n $pid ]; then
+		kill -TERM $pid
+		while [ "$i" -lt "$WAIT_TO_STOP" ]; do
+			i=$((i + 1))
+			checkpid $pid && sleep 1 || break
+		done
+		ok
+		rm -f /var/lock/subsys/xorp
+	else
+		died
+	fi
+}
+
+reload() {
+	if [ ! -f /var/lock/subsys/xorp ]; then
+		msg_not_running "xorp"
+		RETVAL=7
+		return
+	fi
+
+	msg_reloading "xorp"
+	killproc xorp_rtrmgr -HUP
+	RETVAL=$?
+}
+
+condrestart() {
+	if [ ! -f /var/lock/subsys/xorp ]; then
+		msg_not_running "xorp"
+		RETVAL=$1
+		return
+	fi
+
+	stop
+	start
+}
+
+RETVAL=0
+# See how we were called.
+case "$1" in
+  start)
+  	start
+	;;
+  stop)
+  	stop
+	;;
+  restart)
+	stop
+	start
+	;;
+  try-restart)
+	condrestart 0
+	;;
+  reload|force-reload)
+  	reload
+	;;
+  status)
+	status --pidfile /var/run/xorp.pid XORP
+	exit $?
+	;;
+  *)
+	msg_usage "$0 {start|stop|restart|try-restart|reload|force-reload|flush-logs|status}"
+	exit 3
+esac
+
+exit $RETVAL
