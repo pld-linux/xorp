@@ -55,7 +55,7 @@ programowych. Przykładem może być modularny router Click.
 
 %prep
 %setup -q -n %{name}
-%patch0 -p1
+%patch -P0 -p1
 
 # in addition to patch0
 %{__sed} -i "s#/lib/xorp#/%{_lib}/xorp#g" rtrmgr/util.cc
